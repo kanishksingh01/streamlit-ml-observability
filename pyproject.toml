@@ -1,0 +1,15 @@
+[project]
+name = "streamlit-ml-observability"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "altair>=5.5.0",
+    "numpy>=2.0.2",
+    "pandas>=2.3.3",
+    "plotly>=6.3.1",
+    "scikit-learn>=1.6.1",
+    "scipy>=1.13.1",
+    "streamlit>=1.50.0",
+]
