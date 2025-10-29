@@ -14,7 +14,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-st.title("Ì¥ç ML Observability Dashboard")
+st.title("ML Observability Dashboard")
 st.caption("Real-time anomaly detection using IsolationForest + Streamlit")
 
 # Sidebar controls
@@ -40,7 +40,7 @@ scored_df = score_dataframe(model, df)
 summary = compute_anomaly_summary(scored_df)
 
 # Dashboard layout
-st.subheader("Ì≥ä Metrics Overview")
+st.subheader("Metrics Overview")
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Points", summary["total_points"])
 col2.metric("Anomalies", summary["anomalies"])
@@ -59,10 +59,8 @@ with tab1:
     st.plotly_chart(fig, use_container_width=True)
 
 with tab2:
-    st.altair_chart(
-        px.histogram(scored_df, x="latency", color="predicted_anomaly").to_altair(),
-        use_container_width=True
-    )
+    hist_fig = px.histogram(scored_df, x="latency", color="predicted_anomaly", title="Latency Distribution")
+    st.plotly_chart(hist_fig, use_container_width=True)
 
 with tab3:
     baseline = generate_baseline(300)
@@ -72,7 +70,7 @@ with tab3:
 
 # Live simulation (optional)
 if mode == "Simulated":
-    st.markdown("### Ì¥Å Real-Time Simulation")
+    st.markdown("### Real-Time Simulation")
     placeholder = st.empty()
     for i in range(20):
         new_data = generate_baseline(10, seed=int(time.time()))
