@@ -79,4 +79,3 @@ if mode == "Simulated":
         summary_live = compute_anomaly_summary(scored_new)
         placeholder.metric("Live Anomaly Rate (%)", summary_live["anomaly_rate"])
         time.sleep(refresh_rate)
-
